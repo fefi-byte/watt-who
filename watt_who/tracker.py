@@ -10,6 +10,10 @@ class DeviceState:
     energy_wh: float = 0.0
     _active_for: float = 0.0
 
+    @property
+    def running(self) -> bool:
+        return self._active_for >= self.config.peak_duration
+
     def update(self, power: float, delta: float):
         # If power close to peak, count as running
         expected = self.config.peak_power
@@ -38,3 +42,6 @@ class PowerTracker:
 
     def get_energy_kwh(self) -> Dict[str, float]:
         return {name: state.energy_wh / 1000.0 for name, state in self.devices.items()}
+
+    def get_running_states(self) -> Dict[str, bool]:
+        return {name: state.running for name, state in self.devices.items()}
