@@ -32,3 +32,15 @@ name of your broker and ensure Home Assistant's MQTT integration is enabled.
 Home Assistant will automatically discover sensors for each configured device
 via MQTT discovery. The energy usage will appear as sensors named
 `<device> Energy`.
+
+### Installing as a Home Assistant Add-on
+
+To use this container directly in Home Assistant, add this repository to the
+"Add-on store" as a custom source:
+
+1. Open **Settings -> Add-ons -> Add-on Store**.
+2. Use the menu in the upper right to select **Repositories** and add the URL of
+   this repository.
+3. After the repository is added, the "Watt Who" add-on becomes available for
+   installation. Configure the MQTT options (host, port, username and password)
+   in the add-on settings and start it.
