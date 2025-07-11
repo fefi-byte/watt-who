@@ -1,23 +1,15 @@
 {
   "name": "Watt Who",
   "slug": "watt_who",
-  "description": "Track power usage of devices and publish via MQTT",
-  "version": "0.1.2",
+  "description": "Track power usage of devices and publish via the Home Assistant API",
+  "version": "0.2.0",
   "startup": "services",
   "boot": "auto",
   "arch": ["amd64", "aarch64", "armv7", "armhf", "i386"],
   "options": {
-    "mqtt_host": "homeassistant",
-    "mqtt_port": 1883,
-    "mqtt_username": "",
-    "mqtt_password": ""
-    ,"homeassistant_api": false
+    "debug": false
   },
   "schema": {
-    "mqtt_host": "str",
-    "mqtt_port": "int",
-    "mqtt_username": "str?",
-    "mqtt_password": "str?"
-    ,"homeassistant_api": "bool"
+    "debug": "bool"
   }
 }
