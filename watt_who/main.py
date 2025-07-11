@@ -1,9 +1,11 @@
 import argparse
+import os
 import random
 import time
 
 from .config import load_config
 from .tracker import PowerTracker
+from .mqtt_client import MqttClient
 
 
 def main():
@@ -15,6 +17,11 @@ def main():
     devices = load_config(args.config)
     tracker = PowerTracker(devices)
 
+    mqtt_client = None
+    if os.getenv("MQTT_DISABLE") != "1":
+        mqtt_client = MqttClient()
+        mqtt_client.publish_discovery(devices.keys())
+
     try:
         while True:
             # In a real application, replace this with actual sensor reading
@@ -22,6 +29,8 @@ def main():
             tracker.update_power(current_power)
             energy = tracker.get_energy_kwh()
             print('\r' + ', '.join(f"{name}: {val:.4f} kWh" for name, val in energy.items()), end='')
+            if mqtt_client:
+                mqtt_client.publish_state(energy)
             time.sleep(args.interval)
     except KeyboardInterrupt:
         print()  # newline
