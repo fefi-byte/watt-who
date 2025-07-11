@@ -11,7 +11,7 @@ from .ha_client import HaClient
 
 def main():
     parser = argparse.ArgumentParser(description="Simple power tracker")
-    parser.add_argument('--config', default='devices.yml', help='Path to device config')
+    parser.add_argument('--config', default='/config/devices.yml', help='Path to device config')
     parser.add_argument('--interval', type=float, default=1.0, help='Sampling interval in seconds')
     args = parser.parse_args()
 
