@@ -44,3 +44,7 @@ To use this container directly in Home Assistant, add this repository to the
 3. After the repository is added, the "Watt Who" add-on becomes available for
    installation. Configure the MQTT options (host, port, username and password)
    in the add-on settings and start it.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
