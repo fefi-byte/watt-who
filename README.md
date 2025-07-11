@@ -6,7 +6,7 @@ and display energy usage.
 
 ## Usage
 
-1. Define your devices in `devices.yml`.
+1. Define your devices in `/config/devices.yml` alongside your `configuration.yaml`.
 2. Build the docker image:
 
 ```bash
