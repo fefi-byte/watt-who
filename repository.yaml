@@ -1,0 +1,6 @@
+name: "Watt who"
+url: "https://github.com/fefi-byte/watt-who"
+maintainer: "Felix Peters"
+addons:
+   watt-who:
+    repository: hassio-addon
