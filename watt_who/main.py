@@ -6,6 +6,7 @@ import time
 from .config import load_config
 from .tracker import PowerTracker
 from .mqtt_client import MqttClient
+from .ha_client import HaClient
 
 
 def main():
@@ -22,6 +23,10 @@ def main():
         mqtt_client = MqttClient()
         mqtt_client.publish_discovery(devices.keys())
 
+    ha_client = None
+    if os.getenv("HOMEASSISTANT_API", "false").lower() == "true":
+        ha_client = HaClient()
+
     try:
         while True:
             # In a real application, replace this with actual sensor reading
@@ -31,6 +36,8 @@ def main():
             print('\r' + ', '.join(f"{name}: {val:.4f} kWh" for name, val in energy.items()), end='')
             if mqtt_client:
                 mqtt_client.publish_state(energy)
+            if ha_client:
+                ha_client.publish_state(energy)
             time.sleep(args.interval)
     except KeyboardInterrupt:
         print()  # newline

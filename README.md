@@ -43,7 +43,10 @@ To use this container directly in Home Assistant, add this repository to the
    this repository.
 3. After the repository is added, the "Watt Who" add-on becomes available for
    installation. Configure the MQTT options (host, port, username and password)
-   in the add-on settings and start it.
+   in the add-on settings. To update sensor states via the Home Assistant REST
+   API, enable the option `homeassistant_api: true`. The add-on requires the
+   **Home Assistant Core API** permission for this feature. Start the add-on
+   after saving the settings.
 
 ## License
 

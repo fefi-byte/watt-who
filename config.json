@@ -11,11 +11,13 @@
     "mqtt_port": 1883,
     "mqtt_username": "",
     "mqtt_password": ""
+    ,"homeassistant_api": false
   },
   "schema": {
     "mqtt_host": "str",
     "mqtt_port": "int",
     "mqtt_username": "str?",
     "mqtt_password": "str?"
+    ,"homeassistant_api": "bool"
   }
 }
