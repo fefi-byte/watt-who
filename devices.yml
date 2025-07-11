@@ -1,0 +1,8 @@
+Doerautomat:
+  peak_power: 340
+  threshold: 0.95
+  peak_duration: 3
+  cycle:
+    on: 3
+    off: 7
+    power: 360
