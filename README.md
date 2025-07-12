@@ -23,6 +23,26 @@ verbose debug output.
 
 The example configuration contains one device named `Doerautomat`.
 
+## Configuration
+
+When running as an add-on, devices can be configured directly in the add-on
+settings. Add a `devices` list with the same fields used in `devices.yml`:
+
+```yaml
+devices:
+  - name: Doerautomat
+    peak_power: 340
+    threshold: 0.95
+    peak_duration: 3
+    cycle:
+      on: 3
+      off: 7
+      power: 360
+```
+
+You may still provide a `/config/devices.yml` file; however, the add-on options
+take precedence when defined.
+
 ### Home Assistant Integration
 
 The container requires the `SUPERVISOR_TOKEN` environment variable so it can
