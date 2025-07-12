@@ -12,6 +12,7 @@ from .ha_client import HaClient
 def main():
     parser = argparse.ArgumentParser(description="Simple power tracker")
     parser.add_argument('--config', default='/config/devices.yml', help='Path to device config')
+    parser.add_argument('--options', default='/data/options.json', help='Add-on options file')
     parser.add_argument('--interval', type=float, default=1.0, help='Sampling interval in seconds')
     parser.add_argument('--debug', action='store_true', help='Enable debug output')
     args = parser.parse_args()
@@ -19,7 +20,10 @@ def main():
     logging.basicConfig(level=logging.DEBUG if args.debug or os.getenv('DEBUG') == '1' else logging.INFO,
                         format='[%(levelname)s] %(message)s')
 
-    devices = load_config(args.config)
+    config_path = args.config
+    if os.path.exists(args.options):
+        config_path = args.options
+    devices = load_config(config_path)
     tracker = PowerTracker(devices)
 
     ha_client = HaClient()
