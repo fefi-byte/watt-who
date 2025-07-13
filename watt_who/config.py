@@ -1,4 +1,5 @@
 import yaml
+import json
 from dataclasses import dataclass
 from typing import Dict, Any
 
@@ -19,7 +20,15 @@ class DeviceConfig:
 
 def load_config(path: str) -> Dict[str, DeviceConfig]:
     with open(path, 'r') as f:
-        data = yaml.safe_load(f) or {}
+        if path.endswith('.json'):
+            opts = json.load(f) or {}
+            devices_in = opts.get('devices', opts)
+            if isinstance(devices_in, list):
+                data = {d.get('name', f'device_{i}'): d for i, d in enumerate(devices_in)}
+            else:
+                data = devices_in
+        else:
+            data = yaml.safe_load(f) or {}
     devices = {}
     for name, cfg in data.items():
         cycle_cfg = cfg.get('cycle', {})
