@@ -7,9 +7,23 @@
   "boot": "auto",
   "arch": ["amd64", "aarch64", "armv7", "armhf", "i386"],
   "options": {
-    "debug": false
+    "debug": false,
+    "devices": []
   },
   "schema": {
-    "debug": "bool"
+    "debug": "bool",
+    "devices": [
+      {
+        "name": "str",
+        "peak_power": "float",
+        "threshold": "float?",
+        "peak_duration": "float?",
+        "cycle": {
+          "on": "float?",
+          "off": "float?",
+          "power": "float?"
+        }
+      }
+    ]
   }
 }
