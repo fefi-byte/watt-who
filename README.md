@@ -25,35 +25,7 @@ The example configuration contains one device named `Doerautomat`.
 
 ## Configuration
 
-Device settings can be provided at runtime via the `--devices` option. The value
-can be a path to a YAML or JSON file, or a literal configuration string. If the
-option is omitted, Watt Who falls back to `/config/devices.yml`.
 
-Example YAML:
-
-```yaml
-Doerautomat:
-  peak_power: 340
-  threshold: 0.95
-  peak_duration: 3
-  cycle:
-    on: 3
-    off: 7
-    power: 360
-```
-
-Equivalent JSON:
-
-```json
-{
-  "Doerautomat": {
-    "peak_power": 340,
-    "threshold": 0.95,
-    "peak_duration": 3,
-    "cycle": { "on": 3, "off": 7, "power": 360 }
-  }
-}
-```
 
 ### Home Assistant Integration
 
