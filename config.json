@@ -2,7 +2,7 @@
   "name": "Watt Who",
   "slug": "watt_who",
   "description": "Track power usage of devices and publish via the Home Assistant API",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "startup": "services",
   "boot": "auto",
   "arch": ["amd64", "aarch64", "armv7", "armhf", "i386"],
